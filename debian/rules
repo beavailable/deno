@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	dh_auto_build
+	mkdir build/; \
+	cp deno_$$(dpkg --print-architecture) build/deno
+
+override_dh_auto_install:
+	dh_auto_install
+	dh_install build/deno usr/bin/
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf build

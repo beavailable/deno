@@ -1,0 +1,15 @@
+Source: deno
+Section: web
+Priority: optional
+Maintainer: beavailable <beavailable@proton.me>
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.7.2
+Homepage: https://github.com/denoland/deno
+
+Package: deno
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: A modern runtime for JavaScript and TypeScript
