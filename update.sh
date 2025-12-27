@@ -45,7 +45,7 @@ elif [[ "${DENO_FORCE_RELEASE:-}" == 'true' ]]; then
     download_binaries "$version"
     new_version="$version-$((revision + 1))"
 else
-    exit
+    exit 0
 fi
 
 changelog=$(cat debian/changelog)
