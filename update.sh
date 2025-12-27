@@ -19,6 +19,10 @@ download_binaries() {
         fi
         rm "$f"
     done
+    mkdir completions
+    ./deno_amd64 completions bash >completions/deno
+    ./deno_amd64 completions zsh >completions/_deno
+    ./deno_amd64 completions fish >completions/deno.fish
 }
 
 read -r version revision <<<$(sed -nE '1s/^\S+ \((\S+)-(\S+)\) .+$/\1 \2/p' debian/changelog)
@@ -61,7 +65,7 @@ git -c user.name="$user" -c user.email="$email" commit -am "Release $new_version
 git -c user.name="$user" -c user.email="$email" tag "$new_version" -am "Release $new_version"
 git push origin --follow-tags --atomic
 
-git add deno_*
+git add deno_* completions
 git -c user.name="$user" -c user.email="$email" commit -m 'Add files'
 
 echo "release=true" >>$GITHUB_OUTPUT

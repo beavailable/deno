@@ -11,6 +11,9 @@ override_dh_auto_build:
 override_dh_auto_install:
 	dh_auto_install
 	dh_install build/deno usr/bin/
+	dh_install completions/deno /usr/share/bash-completion/completions/
+	dh_install completions/_deno usr/share/zsh/vendor-completions/
+	dh_install completions/deno.fish usr/share/fish/vendor_completions.d/
 
 override_dh_auto_clean:
 	dh_auto_clean
