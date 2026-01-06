@@ -50,10 +50,10 @@ for tag in $tags; do
 done
 
 if [[ -n "$new_version" ]]; then
-    download_binaries "$new_version"
+    download_binaries "$new_version" || exit 0
     new_version="$new_version-1"
 elif [[ "${DENO_FORCE_RELEASE:-}" == 'true' ]]; then
-    download_binaries "$version"
+    download_binaries "$version" || exit 0
     new_version="$version-$((revision + 1))"
 else
     exit 0
