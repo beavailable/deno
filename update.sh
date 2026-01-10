@@ -7,7 +7,7 @@ _curl() {
     local retries
     retries=0
     while true; do
-        if curl -sSL --fail-early --fail-with-body --connect-timeout 10 "$@"; then
+        if curl -sSL --fail-early --fail-with-body --connect-timeout 10 -H "Authorization: Bearer $GITHUB_TOKEN" "$@"; then
             break
         fi
         ((++retries))

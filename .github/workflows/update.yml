@@ -22,6 +22,7 @@ jobs:
         id: update
         run: ./update.sh
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DENO_FORCE_RELEASE: ${{ inputs.force_release }}
       - name: Upload to OBS
         if: ${{ steps.update.outputs.release == 'true' }}
